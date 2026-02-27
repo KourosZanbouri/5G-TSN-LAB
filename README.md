@@ -117,40 +117,6 @@ kubectl logs -n open5gs -l app.kubernetes.io/component=amf | grep sctp
 > `[sctp] server (10.42.x.x:38412) bound`
 
 ----------
-
-## 🚧 TSN Implementation (Under Development)
-
-This section details the ongoing work to enable **Time-Sensitive Networking (TSN)** features on top of the 5G Core.
-
-## 1. Traffic Isolation (Multus CNI)
-
--   **Goal:** Separate Control Plane traffic (Kubernetes/Flannel) from User Plane traffic (5G Data).
-    
--   **Implementation:** Integrating **Multus CNI** to attach a secondary network interface (`net1`) to the UPF pod.
-    
--   **Status:** _In Progress_ - Defining `NetworkAttachmentDefinition` for Macvlan bridging.
-    
-
-## 2. Deterministic Scheduling (Traffic Control)
-
--   **Goal:** Emulate IEEE 802.1Qbv (Time-Aware Shaper) behavior in a virtualized environment.
-    
--   **Implementation:** Using Linux `tc-taprio` (Traffic Control) to enforce strict priority queuing for TSN flows.
-    
--   **Tools:** [ottoblep/tsn-5g-testbench](https://github.com/ottoblep/tsn-5g-testbench) for traffic generation and latency measurement.
-    
-
-## 3. PTP Synchronization
-
--   **Goal:** Achieve microsecond-level clock synchronization between nodes.
-    
--   **Implementation:** Deploying `linuxptp` (PTP4l) DaemonSets on all Kubernetes nodes to synchronize system clocks via software PTP.
-    
-
-----------
-
-
-
 ## 🛠️ Tech Stack
 | Component | Technology |
 | :--- | :--- |
@@ -164,7 +130,7 @@ This section details the ongoing work to enable **Time-Sensitive Networking (TSN
 | **TSN Tools** | Linux Traffic Control (`tc`), PTP4l |
 
 
-## TSN Implementation (Under Development)
+## 🚧 TSN Implementation (Under Development)
 
 This section details the ongoing work to enable **Software-Defined TSN** features on top of the 5G Core using a pure Linux networking approach.
 
